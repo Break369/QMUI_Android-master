@@ -1,0 +1,20 @@
+apply plugin: 'java'
+
+configurations {
+    lintChecks
+}
+/*tasks.withType(Compile) {
+    options.encoding = "UTF-8"
+}*/
+dependencies {
+    compile "com.android.tools.lint:lint-api:25.1.2"
+    compile "com.android.tools.lint:lint-checks:25.1.2"
+
+    lintChecks files(jar)
+}
+
+jar {
+    manifest {
+        attributes('Lint-Registry': 'com.qmuiteam.qmui.lint.QMUIIssueRegistry')
+    }
+}
